@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        {% block title %} Online магазин {% endblock %}
+    </title>
+</head>
+<body>
+<nav>
+<ul>
+    <li> <a href="{{ url_for('clothes') }}">clothes</a>></li>
+    <li> <a href="{{ url_for('jacket') }}">jacket</a>></li>
+    <li> <a href="{{ url_for('shoes') }}">shoes</a>></li>
+    <li> <a href="{{ url_for('base') }}">home</a>></li>
+</ul>
+</nav>
+<header>
+    {% block content %} {% endblock %}
+    <p>  {% block cost %} {% endblock %}</p>
+</header>
+
+
+<footer>
+    <p> Почта: vbc79@test.ru, ул. Вертолетчиков, дом Пулеметчиков </p>
+</footer>
+
+</body>
+</html>

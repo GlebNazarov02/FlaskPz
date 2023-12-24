@@ -1,0 +1,24 @@
+{%  extends 'base.html' %}
+
+{% block title %}
+      Students
+{% endblock %}
+{% block content %}
+<h1>Информация о студентах</h1>
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Возраст</th>
+        <th>Средний балл</th>
+    </tr>
+    {% for student in students %}
+    <tr>
+        <td>{{ student.name }}</td>
+        <td>{{ student.surname }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.average }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
