@@ -18,19 +18,20 @@ csrf = CSRFProtect(app)
 def init_db():
     db.create_all()
 
-
 @app.route('/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     email = request.form.get('email')
     password = request.form.get('password')
     context = {}
-    if request.method =='POST' and form.validate():    
-        if (email, password) in db():
-            context = {'alert_message': "Вы вошли "}
-            return render_template('login.html',form = form, **context)
-        context = {'alert_message': "Вход не выполнен "}
-    return render_template('login.html',form = form, **context)
+    if request.method == 'POST' and form.validate():
+        user = User.query.filter_by(email=email).first()
+        if user and user.check_password(password):
+            context = {'alert_message': "Вы вошли"}
+            return render_template('login.html', form=form, **context)
+        context = {'alert_message': "Вход не выполнен"}
+    return render_template('login.html', form=form, **context)
+
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
@@ -60,3 +61,6 @@ with app.app_context():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+ 
+
