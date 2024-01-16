@@ -5,9 +5,9 @@
     {{ super() }} - {{ title }}
     {% endblock %}
 
-    <h1>login</h1>
+    <h1>Login</h1>
     <div class="container">
-    <form action="{{ url_for('login') }}" method="post">
+    <form action="{{ url_for('login') }}" method="POST">
         {{ form.csrf_token }}
 
         {% if alert_message %}
@@ -30,7 +30,7 @@
         </p>
         {% endfor %}
         <p>
-        <input type="submit" value="login">
+        <input type="submit" value="Login">
         </p>
     </form>
     </div>
