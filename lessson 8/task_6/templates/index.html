@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+    Users
+    {% endblock %}
+
+<div class="container">
+        {% block content %}
+            <div class="header">
+                <h1 class="title">Task6</h1>
+            <br>
+            </div>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.user_id }}</td>
+                    <td>{{user.name }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <form class="container send_form" action="/task6/postdata" method="post">
+            <p>
+                Name:<br>
+                    <input name="name" />
+            </p>
+            <p>
+                Email:<br>
+                    <input type="email" name="email"/>
+            </p>
+            <p>
+                Password:<br>
+                    <input type="password" name="password"/>
+            </p>
+            <input class="button" type="submit" value="Add new user" />
+        </form>
+        {% endblock %}
+</div>
